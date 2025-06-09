@@ -26,7 +26,7 @@ setup(
     description="Convert CSV files to SQL create table and insert statements",
     long_description=open("README.md", encoding='utf-8').read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/csv2sql",
+    url="https://github.com/wangchenbu/csv2sql",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
