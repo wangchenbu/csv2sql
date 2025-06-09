@@ -1,31 +1,17 @@
 from csv2sql import CSV2SQL
 
-def test_convert_file():
+def test_convert_multiple_files():
     converter = CSV2SQL()
-    converter.convert_file(
-        input_file='custom.csv',
-        output_file='employees.db',
-        db_type='sqlite',
-        table_name='employees'
+    # 可以是文件列表，也可以是通配符字符串
+    input_files = ['custom.csv', 'test_data.csv']  # 或 input_files = '*.csv'
+    output_file = 'multi_import.db'
+    converter.convert_multiple_files(
+        input_files=input_files,
+        output_file=output_file,
+        db_type='sqlite',  # 也可以用'mysql'等
+        table_name_pattern='table_{filename}'  # 可选，表名格式
     )
-    print("文件转换完成！")
-
-def test_convert_string():
-    converter = CSV2SQL()
-    # 从文件读取 CSV 内容
-    with open('custom.csv', 'r', encoding='utf-8') as f:
-        csv_content = f.read()
-    
-    sql = converter.convert_string(
-        csv_content=csv_content,
-        db_type='sqlite',
-        table_name='employees'
-    )
-    print("SQL 输出：")
-    print(sql)
+    print("批量导入完成！")
 
 if __name__ == '__main__':
-    print("测试文件转换...")
-    test_convert_file()
-    print("\n测试字符串转换...")
-    test_convert_string() 
+    test_convert_multiple_files()
